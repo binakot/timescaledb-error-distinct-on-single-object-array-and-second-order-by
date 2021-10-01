@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  postgres_11:
+    image: postgres:11
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./test.sh:/docker-entrypoint-initdb.d/999_test.sh
+
+  postgres_12:
+    image: postgres:12
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./test.sh:/docker-entrypoint-initdb.d/999_test.sh
+
+  postgres_13:
+    image: postgres:13
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./test.sh:/docker-entrypoint-initdb.d/999_test.sh
+
+  timescaledb_11:
+    image: timescale/timescaledb:latest-pg11
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./test_hypertable.sh:/docker-entrypoint-initdb.d/999_test.sh
+
+  timescaledb_12:
+    image: timescale/timescaledb:latest-pg12
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./test_hypertable.sh:/docker-entrypoint-initdb.d/999_test.sh
+
+  timescaledb_13:
+    image: timescale/timescaledb:latest-pg13
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./test_hypertable.sh:/docker-entrypoint-initdb.d/999_test.sh
